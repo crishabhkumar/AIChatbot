@@ -196,7 +196,3 @@ This creates an optimized build in the `build/` directory ready for deployment.
 - Mobile-first approach
 - Flexible layouts that adapt to screen size
 - Touch-friendly controls for mobile devices
-
-## License
-
-This project is part of the SmartHub.API solution.

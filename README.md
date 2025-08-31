@@ -222,17 +222,6 @@ cd SmartHub.API && dotnet run --verbosity diagnostic
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🆘 Support
-
-For support, please:
-1. Check the [Issues](../../issues) section
-2. Review the API documentation at `/swagger`
-3. Check the console logs for error details
-
 ---
 
 **Built with ❤️ using React, TypeScript, .NET Core, and modern web technologies.**
