@@ -13,7 +13,7 @@ A complete full-stack AI chatbot solution featuring a modern React frontend and 
 
 1. **Clone and setup the repository**
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/crishabhkumar/AIChatbot.git
 cd AIChatbot
 ```
 
