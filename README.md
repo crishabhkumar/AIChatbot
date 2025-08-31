@@ -100,7 +100,42 @@ AIChatbot/
 - ✅ **Connection Monitoring**: Real-time status indicators
 - ✅ **Health Checks**: API monitoring and diagnostics
 
-## 🔧 Configuration
+## � Screenshots
+
+### Welcome Screen
+Get started with a clean, modern interface that guides users through the chat experience.
+
+![Welcome Screen](Screenshots/welcomeScreen.png)
+
+![Welcome Screen Alternative](Screenshots/welcomeScreen2.png)
+
+### Chat Interface
+Experience smooth, real-time conversations with AI in a beautifully designed chat interface.
+
+![Chat Example 1](Screenshots/chatExample1.png)
+
+![Chat Example 2](Screenshots/chatExample2.png)
+
+![Chat Example 3](Screenshots/chatExample3.png)
+
+### Settings Panel
+Customize your AI experience with intuitive controls for temperature, tokens, and system behavior.
+
+![Settings Screen](Screenshots/settingsScreen.png)
+
+### Clear Chat History
+Clean, user-friendly modal dialogs for important actions.
+
+![Clear Chat History](Screenshots/clearChatHistory.png)
+
+### Connection Status
+Real-time connection monitoring with clear visual indicators.
+
+![Chat Screen](Screenshots/chatScreen.png)
+
+![Disconnected State](Screenshots/disconnectedState.png)
+
+## �🔧 Configuration
 
 ### Backend Configuration
 Create `SmartHub.API/appsettings.Development.json`:
