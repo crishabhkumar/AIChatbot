@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import Modal from 'react-modal';
+import { Trash2, AlertTriangle } from 'lucide-react';
 import { ChatMessage, ChatSettings, AIProvider } from '../types';
 import { aiApi, handleApiError } from '../api';
 import ChatHeader from './ChatHeader';
@@ -20,6 +22,7 @@ const Chat: React.FC = () => {
   });
   const [availableProviders, setAvailableProviders] = useState<AIProvider[]>([]);
   const [isOnline, setIsOnline] = useState(true);
+  const [isClearModalOpen, setIsClearModalOpen] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Check API connection and get available providers
@@ -129,10 +132,17 @@ const Chat: React.FC = () => {
   };
 
   const handleClearChat = () => {
-    if (window.confirm('Are you sure you want to clear the chat history?')) {
-      setMessages([]);
-      localStorage.removeItem('chatMessages');
-    }
+    setIsClearModalOpen(true);
+  };
+
+  const confirmClearChat = () => {
+    setMessages([]);
+    localStorage.removeItem('chatMessages');
+    setIsClearModalOpen(false);
+  };
+
+  const cancelClearChat = () => {
+    setIsClearModalOpen(false);
   };
 
   return (
@@ -160,6 +170,38 @@ const Chat: React.FC = () => {
       />
 
       <ChatFooter availableProviders={availableProviders} />
+
+      {/* Clear Chat Confirmation Modal */}
+      <Modal
+        isOpen={isClearModalOpen}
+        onRequestClose={cancelClearChat}
+        className="clear-chat-modal"
+        overlayClassName="clear-chat-modal-overlay"
+        ariaHideApp={false}
+      >
+        <div className="modal-header">
+          <div className="modal-icon">
+            <AlertTriangle size={32} className="text-orange-500" />
+          </div>
+          <h2 className="modal-title">Clear Chat History</h2>
+        </div>
+        
+        <div className="modal-body">
+          <p className="modal-message">
+            Are you sure you want to clear all chat history? This action cannot be undone.
+          </p>
+        </div>
+        
+        <div className="modal-actions">
+          <button onClick={cancelClearChat} className="modal-cancel-btn">
+            Cancel
+          </button>
+          <button onClick={confirmClearChat} className="modal-confirm-btn">
+            <Trash2 size={16} />
+            Clear History
+          </button>
+        </div>
+      </Modal>
     </div>
   );
 };

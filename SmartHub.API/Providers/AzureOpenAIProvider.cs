@@ -46,7 +46,11 @@ namespace SmartHub.API.Providers
 
                 messages.Add(ChatMessage.CreateUserMessage(request.Prompt));
 
-                var chatCompletionOptions = new ChatCompletionOptions();
+                var chatCompletionOptions = new ChatCompletionOptions()
+                {
+                    MaxOutputTokenCount = request.MaxTokens,
+                    Temperature = (float)request.Temperature
+                };
 
                 var response = await _chatClient.CompleteChatAsync(messages, chatCompletionOptions, cancellationToken);
 

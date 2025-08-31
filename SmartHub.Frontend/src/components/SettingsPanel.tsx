@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ChatSettings, AIProvider, getProviderDisplayName, getProviderModel } from '../types';
 import { Settings, Thermometer, Hash, Bot, Zap, ChevronDown, ChevronUp } from 'lucide-react';
+import Tooltip from './Tooltip';
 
 interface SettingsPanelProps {
   settings: ChatSettings;
@@ -26,8 +27,41 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
           <Settings size={16} className="settings-icon-compact" />
           <span>Settings</span>
           <div className="settings-preview">
-            <span className="preview-item">🌡️ {settings.temperature}</span>
-            <span className="preview-item">📏 {settings.maxTokens}</span>
+            <Tooltip content={`Temperature: ${settings.temperature} - Controls AI creativity (0=Conservative, 1=Balanced, 2=Creative)`}>
+              <span className="preview-item">
+                🌡️ {settings.temperature}
+              </span>
+            </Tooltip>
+            
+            <Tooltip content={`Max Tokens: ${settings.maxTokens} - Maximum response length (1-4000 tokens)`}>
+              <span className="preview-item">
+                📏 {settings.maxTokens}
+              </span>
+            </Tooltip>
+            
+            <Tooltip content={`System Message: "${settings.systemMessage}" - Defines AI behavior and personality`}>
+              <span className="preview-item">
+                💬 {settings.systemMessage.length > 20 
+                  ? settings.systemMessage.substring(0, 20) + '...' 
+                  : settings.systemMessage || 'Default'}
+              </span>
+            </Tooltip>
+            
+            {settings.selectedProvider !== undefined && (
+              <Tooltip content={`AI Provider: ${getProviderDisplayName(settings.selectedProvider)} - Selected AI service provider`}>
+                <span className="preview-item">
+                  🤖 {getProviderDisplayName(settings.selectedProvider).split(' ')[0]}
+                </span>
+              </Tooltip>
+            )}
+            
+            {settings.selectedProvider === undefined && (
+              <Tooltip content="AI Provider: Auto-fallback - Automatically selects the best available provider">
+                <span className="preview-item">
+                  🔄 Auto
+                </span>
+              </Tooltip>
+            )}
           </div>
         </div>
         <div className="expand-button">
