@@ -1,0 +1,94 @@
+# SmartHub API Test Collection
+# This file contains HTTP requests to test your SmartHub AI API endpoints
+# Use VS Code with "REST Client" extension or Visual Studio to run these requests
+
+@SmartHub_HostAddress = http://localhost:5189
+@BaseUrl = {{SmartHub_HostAddress}}/api/ai
+
+### Health Check
+GET {{BaseUrl}}/health
+Accept: application/json
+
+### Get Available AI Providers
+GET {{BaseUrl}}/providers
+Accept: application/json
+
+### Generate AI Response (Basic)
+POST {{BaseUrl}}/generate
+Content-Type: application/json
+Accept: application/json
+
+{
+  "prompt": "What is artificial intelligence?",
+  "temperature": 0.7,
+  "maxTokens": 500,
+  "systemMessage": "You are a helpful AI assistant."
+}
+
+### Generate AI Response with Custom Parameters
+POST {{BaseUrl}}/generate
+Content-Type: application/json
+Accept: application/json
+
+{
+  "prompt": "Explain machine learning in simple terms",
+  "temperature": 0.5,
+  "maxTokens": 300,
+  "systemMessage": "You are an expert teacher who explains complex topics simply.",
+  "additionalParameters": {
+    "topic": "education"
+  }
+}
+
+### Generate AI Response with Specific Provider (Azure OpenAI)
+POST {{BaseUrl}}/generate?provider=AzureOpenAI
+Content-Type: application/json
+Accept: application/json
+
+{
+  "prompt": "Write a short poem about coding",
+  "temperature": 0.8,
+  "maxTokens": 200
+}
+
+### Generate AI Response with Fallback
+POST {{BaseUrl}}/generate-with-fallback
+Content-Type: application/json
+Accept: application/json
+
+{
+  "prompt": "What are the benefits of clean code?",
+  "temperature": 0.6,
+  "maxTokens": 400,
+  "systemMessage": "You are a senior software developer mentor."
+}
+
+### Test with Minimal Request
+POST {{BaseUrl}}/generate
+Content-Type: application/json
+Accept: application/json
+
+{
+  "prompt": "Hello, how are you?"
+}
+
+### Test with Invalid Request (Missing Prompt)
+POST {{BaseUrl}}/generate
+Content-Type: application/json
+Accept: application/json
+
+{
+  "temperature": 0.7,
+  "maxTokens": 100
+}
+
+### Test with Invalid Parameters (Temperature out of range)
+POST {{BaseUrl}}/generate
+Content-Type: application/json
+Accept: application/json
+
+{
+  "prompt": "Test prompt",
+  "temperature": 3.0,
+  "maxTokens": 100
+}

@@ -1,0 +1,50 @@
+# .NET Core API project
+SmartHub.API/bin/
+SmartHub.API/obj/
+SmartHub.API/*.user
+SmartHub.API/.vs/
+SmartHub.API/.vscode/
+SmartHub.API/appsettings.Development.json
+SmartHub.API/appsettings.Local.json
+
+# React Frontend project
+SmartHub.Frontend/node_modules/
+SmartHub.Frontend/build/
+SmartHub.Frontend/dist/
+SmartHub.Frontend/.env.local
+SmartHub.Frontend/.env.development.local
+SmartHub.Frontend/.env.test.local
+SmartHub.Frontend/.env.production.local
+SmartHub.Frontend/npm-debug.log*
+SmartHub.Frontend/yarn-debug.log*
+SmartHub.Frontend/yarn-error.log*
+SmartHub.Frontend/.pnp
+SmartHub.Frontend/.pnp.js
+SmartHub.Frontend/coverage/
+
+# General patterns
+*.log
+*.cache
+.DS_Store
+Thumbs.db
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE files
+.vscode/
+.vs/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
